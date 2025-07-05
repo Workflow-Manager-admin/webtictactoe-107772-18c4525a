@@ -1,0 +1,242 @@
+:root {
+  /* Theme Colors */
+  --primary: #1976D2;
+  --secondary: #90caf9;
+  --accent: #FFD600;
+  --bg-main: #fff;
+  --bg-board: #f8fafd;
+  --border: #e3e6ea;
+  --shadow: 0 2px 18px 0 rgba(12,42,85,.04);
+  --text-primary: #191c1f;
+  --text-secondary: #65728a;
+  --grid-size: 90vmin;
+  --cell-size: 28vmin;
+  --cell-gap: 2.5vmin;
+  --radius: 18px;
+}
+
+/* App Container */
+.app-outer {
+  min-height: 100vh;
+  background: var(--bg-main);
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+/* Main Content Center */
+.main-container {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 430px;
+  width: 100vw;
+  margin: 0 auto;
+  padding: 4vh 8vw 2vh 8vw;
+}
+
+/* Title */
+.main-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.7em;
+  margin-top: 0.4em;
+}
+
+/* Turn/status/result bar */
+.turn-header, .game-result {
+  margin-bottom: 1.4em;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+}
+
+.turn-header .subtitle {
+  color: var(--text-secondary);
+  margin-right: 0.4em;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.game-result {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.game-result .winner-text {
+  display: flex;
+  align-items: center;
+  font-size: 1.18em;
+  color: var(--primary);
+}
+
+.game-result.draw-text {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* The Tic Tac Toe Board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, var(--cell-size));
+  grid-template-rows: repeat(3, var(--cell-size));
+  gap: var(--cell-gap);
+  background: var(--bg-board);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 2em;
+  margin-top: 0.8em;
+}
+
+/* Individual Square Styling */
+.square {
+  background: #fff;
+  border: 2.7px solid var(--border);
+  border-radius: 14px;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary);
+  transition:
+    border 0.16s cubic-bezier(0.4,0,0.2,1), 
+    box-shadow 0.18s cubic-bezier(0.4,0,0.2,1),
+    background 0.12s cubic-bezier(0.4,0,0.2,1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  aspect-ratio: 1 / 1;
+}
+
+.square:not(:disabled):hover, .square:focus-visible {
+  border: 2.7px solid var(--accent);
+  box-shadow: 0 3px 15px 0 rgba(255,214,0,0.09);
+  z-index: 2;
+}
+.square.highlight {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent) inset;
+  background: rgba(255, 214, 0, 0.10);
+}
+
+.square:active {
+  opacity: 0.92;
+}
+.square:disabled {
+  cursor: default;
+  background: #fafbfc;
+  color: #b1b1b1;
+}
+
+/* Player Mark Styling */
+.player-x, .player-o {
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 1;
+  display: inline-block;
+  transition: color 0.17s;
+}
+.player-x {
+  color: var(--accent);
+  text-shadow: 0 0 6px #ffe148, 0 1px 0 #ded168;
+  letter-spacing: 0.02em;
+}
+.player-o {
+  color: var(--primary);
+  text-shadow: 0 0 4px #b7e3ff, 0 1px 0 #d3eafd;
+  letter-spacing: 0.02em;
+}
+.player-x.large, .player-o.large {
+  font-size: 1.7em;
+  margin-right: 0.25em;
+}
+.pulse { animation: pulse 1s infinite alternate ease-in; }
+@keyframes pulse {
+  100% { transform: scale(1.13); }
+}
+
+/* Reset Button */
+.control-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.7em;
+}
+.reset-btn {
+  background: var(--accent);
+  color: #212121;
+  border: none;
+  border-radius: 13px;
+  padding: 0.73em 2.5em;
+  font-size: 1.09rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 18px 0 rgba(12,42,85,.04);
+  transition: background 0.18s, box-shadow 0.20s;
+  cursor: pointer;
+}
+.reset-btn:hover,
+.reset-btn:focus-visible {
+  background: #ffe066;
+  box-shadow: 0 4px 16px 0 rgba(255,214,0,0.12);
+}
+
+.reset-btn:active {
+  background: #ffe799;
+}
+
+/* Footer */
+.footer-note {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.99rem;
+  color: #afb7c1;
+  padding: 1.1em 6vw 1.3em 6vw;
+  letter-spacing: 0.01em;
+}
+.footer-link {
+  color: #afd9ee;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-link:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 750px) {
+  :root {
+    --grid-size: 92vw;
+    --cell-size: 29vw;
+    --cell-gap: 2vw;
+  }
+  .main-container {
+    max-width: 99vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+  .board { margin-bottom: 1.6em; }
+  .main-title { font-size: 1.28rem; }
+}
+@media (max-width: 480px) {
+  .main-title { font-size: 1rem; }
+  .turn-header, .game-result { font-size: 1.1rem; }
+  .board { gap: 1.2vw; }
+  .reset-btn { font-size: .97rem; padding: .6em 1.3em; }
+}
+
+::-webkit-scrollbar { width: 0.4em; background: none;}
+::-webkit-scrollbar-thumb { background: #eff0f5; border-radius: 6px;}
