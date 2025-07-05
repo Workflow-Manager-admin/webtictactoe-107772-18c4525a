@@ -10,8 +10,11 @@ import "./App.css";
  * - Game continues to support reset, current turn display, and result detection.
  */
 
-// PUBLIC_INTERFACE
-function App() {
+/**
+ * PUBLIC_INTERFACE
+ * The main Tic Tac Toe game. Exported for routing.
+ */
+function TicTacToeGame() {
   // Game mode: "HUMAN" = 2 player local, "AI" = play against computer
   const [mode, setMode] = useState("HUMAN"); // Default to Human vs Human
   // Board state: Array of 9 values: null, "X", "O"
@@ -307,4 +310,5 @@ function findBestMove(board, aiPlayer, humanPlayer) {
   return emptyCells[Math.floor(Math.random() * emptyCells.length)];
 }
 
-export default App;
+export default TicTacToeGame;
+export { TicTacToeGame };

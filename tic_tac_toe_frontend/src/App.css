@@ -240,3 +240,121 @@
 
 ::-webkit-scrollbar { width: 0.4em; background: none;}
 ::-webkit-scrollbar-thumb { background: #eff0f5; border-radius: 6px;}
+
+/* --- Home Page Styles --- */
+.home-bg {
+  background: linear-gradient(118deg, #eef4f8 0%, #fff 79%);
+  min-height: 100vh;
+}
+
+.game-card-grid {
+  display: flex;
+  gap: 2.5vw;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 2.3em 0 1em 0;
+}
+
+.game-card {
+  background: #fff;
+  border: 1.4px solid var(--border);
+  box-shadow: 0 4px 18px 0 rgba(25, 120, 210, 0.045);
+  border-radius: 17px;
+  min-width: 195px;
+  max-width: 265px;
+  min-height: 160px;
+  padding: 2.2em 2em 1.6em 2em;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.17s, border 0.17s, transform 0.12s;
+  user-select: none;
+  outline: none;
+}
+.game-card:not(.disabled):hover,
+.game-card:not(.disabled):focus-visible {
+  box-shadow: 0 6px 32px 0 rgba(25, 120, 210, 0.08);
+  border: 1.4px solid var(--primary);
+  transform: translateY(-2px) scale(1.025);
+  cursor: pointer;
+}
+.game-card.disabled {
+  opacity: 0.74;
+  background: #f7f8fb;
+  cursor: not-allowed;
+  pointer-events: none;
+  border-style: dashed;
+}
+
+.game-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.68em;
+  position: relative;
+}
+
+.game-title {
+  font-family: inherit;
+  font-size: 1.23rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.02em;
+  margin-left: 0.37em;
+}
+
+.game-icon.ttt {
+  font-size: 2.2em;
+  color: var(--accent);
+  margin-right: 0.08em;
+  line-height: 1;
+}
+
+.game-icon.snl {
+  font-size: 2.05em;
+  color: var(--secondary);
+  margin-right: 0.08em;
+}
+
+.coming-soon {
+  position: absolute;
+  top: -1.0em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.74em;
+  background: var(--accent);
+  color: #232323;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 0.12em 0.88em;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2.5px 12px 0 rgba(255, 214, 0, 0.07);
+}
+
+.game-desc {
+  font-size: 1.01rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.32em;
+  margin-top: 0.15em;
+  min-height: 3em;
+}
+
+.game-cta {
+  font-size: 1.07rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--primary);
+  margin-top: auto;
+}
+
+/* Responsive: stack cards on narrow screens */
+@media (max-width: 640px) {
+  .game-card-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .game-card {
+    max-width: 95vw;
+    width: 95vw;
+  }
+}
